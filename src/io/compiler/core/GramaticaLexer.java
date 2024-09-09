@@ -109,6 +109,7 @@ public class GramaticaLexer extends Lexer {
 		private IfCommand currentIfCommand;
 		private WhileCommand currentWhileCommand;
 		private DoWhileCommand currentDoWhileCommand;
+		private AssignmentCommand currentAssignmentCommand;
 		
 		private Stack<AbstractExpression> abstractStack = new Stack<AbstractExpression>();
 		private AbstractExpression topo = null;

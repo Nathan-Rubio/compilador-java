@@ -40,6 +40,9 @@ public class Program {
 			if (var.getType() == Types.INT) {
 				str.append("    INT ");
 			}
+			else if (var.getType() == Types.FLOAT) {
+				str.append("    FLOAT ");
+			}
 			else {
 				str.append("    STRING ");
 			}

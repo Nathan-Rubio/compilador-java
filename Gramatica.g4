@@ -21,6 +21,7 @@ grammar Gramatica;
 	private IfCommand currentIfCommand;
 	private WhileCommand currentWhileCommand;
 	private DoWhileCommand currentDoWhileCommand;
+	private AssignmentCommand currentAssignmentCommand;
 	
 	private Stack<AbstractExpression> abstractStack = new Stack<AbstractExpression>();
 	private AbstractExpression topo = null;
@@ -215,6 +216,9 @@ cmdDoWhile : 'faca'
 // Comando para a atribuição em uma Expressão
 // Variavel := Expressão;
 cmdAtribuicao : ID { 
+			 		 strExpr = "";
+			 		 currentAssignmentCommand = new AssignmentCommand();
+			 		 
 					 abstractStack.clear();
 
 					 if (!isDeclared(_input.LT(-1).getText())) {
@@ -223,10 +227,11 @@ cmdAtribuicao : ID {
 				   	 Var var = symbolTable.get(_input.LT(-1).getText()); // Pega o ID
 				  	 var.setInitialized(true); // Inicializa o ID
 				     leftType = var.getType(); // Pega o tipo do ID
-				     rightType = null;							
+				     rightType = null;
+				     currentAssignmentCommand.setVar(var);							
 				   }
 			 	OP_AT 
-			 	expr 
+			 	expr { currentAssignmentCommand.setExpression(strExpr); } 
 			 	PV
 			 	
 			 	{
@@ -237,9 +242,16 @@ cmdAtribuicao : ID {
                 	}
 					
 					double result = abstractStack.pop().evaluate();
-					System.out.println("Result: " + result);
-                	var.setValue(Double.toString(result));
+					String formattedResult;
+					if (leftType == Types.INT) {
+					    formattedResult = Integer.toString((int) result);
+					} else {
+					    formattedResult = Double.toString(result);
+					}
+					
+					var.setValue(formattedResult);
                 	System.out.println("ID: " + var);
+                	stack.peek().add(currentAssignmentCommand);
 			 	}
 		   		;
 
@@ -275,7 +287,7 @@ exprl : (
 	
 	
 // Termo	
-termo : fator termol ;
+termo : fator { strExpr += _input.LT(-1).getText(); } termol ;
 
 
 

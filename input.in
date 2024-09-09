@@ -1,7 +1,10 @@
 $ programa
-	declare INT x, y;
+	declare INT   x;
+	declare FLOAT y, z;
 	{	
-		x := 10;
-		y := 20 * x;
+		x := 5 / 2;
+		y := 5 / 2;
+		
+		z := y + x * 2;
 	}
 $
