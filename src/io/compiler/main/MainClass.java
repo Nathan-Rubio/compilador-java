@@ -17,7 +17,7 @@ public class MainClass {
 			GramaticaLexer lexer;
 			GramaticaParser parser;
 			
-			lexer = new GramaticaLexer(CharStreams.fromFileName("input2.in"));
+			lexer = new GramaticaLexer(CharStreams.fromFileName("input.in"));
 			CommonTokenStream tokenStream = new CommonTokenStream(lexer);
 			parser = new GramaticaParser(tokenStream);
 			
