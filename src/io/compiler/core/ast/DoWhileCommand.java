@@ -48,4 +48,22 @@ public class DoWhileCommand extends Command {
 		str.append("} while ("+expression+");");
 		return str.toString();
 	}
+	
+	@Override
+	public String generateTargetPython() {
+		// Substitui os operadores lógicos Java pelos equivalentes em Python
+	    String pythonExpression = expression
+	        .replace("&&", " and ")
+	        .replace("||", " or ");
+	    
+		StringBuilder str = new StringBuilder();
+		str.append("	while True:\n");
+		for (Command cmd: commandList) {
+			str.append("	" + cmd.generateTargetPython());
+		}
+		str.append("		if not (" + pythonExpression + "):\n");
+		str.append("			break\n");
+		str.append("\n");
+		return str.toString();
+	}
 }

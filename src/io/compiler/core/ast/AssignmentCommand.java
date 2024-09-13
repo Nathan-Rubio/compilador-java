@@ -1,5 +1,6 @@
 package io.compiler.core.ast;
 
+import io.compiler.types.Types;
 import io.compiler.types.Var;
 
 public class AssignmentCommand extends Command{
@@ -35,9 +36,31 @@ public class AssignmentCommand extends Command{
 	
 	@Override
 	public String generateTarget() {
-		// TODO Auto-generated method stub
-		StringBuilder str = new StringBuilder();
-		str.append(var.getId() + " = " + expression + ";\n");
-		return str.toString();
+	    StringBuilder str = new StringBuilder();
+	    String expr = expression;
+
+	    // Substitui "verdadeiro" por "true" e "falso" por "false"
+	    if (var.getType() == Types.BOOLEAN) {
+	        expr = expr.replace("verdadeiro", "true").replace("falso", "false");
+	    }
+
+	    str.append(var.getId() + " = " + expr + ";\n");
+	    return str.toString();
 	}
+
+	
+	@Override
+	public String generateTargetPython() {
+	    StringBuilder str = new StringBuilder();
+	    String expr = expression;
+
+	    // Substitui "verdadeiro" por "True" e "falso" por "False"
+	    if (var.getType() == Types.BOOLEAN) {
+	        expr = expr.replace("verdadeiro", "True").replace("falso", "False");
+	    }
+
+	    str.append("	" + var.getId() + " = " + expr + "\n");
+	    return str.toString();
+	}
+
 }

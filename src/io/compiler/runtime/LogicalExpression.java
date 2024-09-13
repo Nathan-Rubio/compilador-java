@@ -1,30 +1,31 @@
 package io.compiler.runtime;
 
-public class BinaryExpression extends AbstractExpression {
-	private char operation;
+public class LogicalExpression extends AbstractExpression{
+	private String operation;
 	private AbstractExpression left;
 	private AbstractExpression right;
 	
-	public BinaryExpression(char operation, AbstractExpression left, AbstractExpression right) {
+	public LogicalExpression(String operation, AbstractExpression left, AbstractExpression right) {
 		super();
 		this.operation = operation;
 		this.left = left;
 		this.right = right;
 	}
-	public BinaryExpression(char operation) {
+	
+	public LogicalExpression(String operation) {
 		super();
 		this.operation = operation;
 	}
 	
-	public BinaryExpression() {
+	public LogicalExpression() {
 		super();
 	}
 	
-	public char getOperation() {
+	public String getOperation() {
 		return operation;
 	}
 	
-	public void setOperation(char operation) {
+	public void setOperation(String operation) {
 		this.operation = operation;
 	}
 	
@@ -45,21 +46,18 @@ public class BinaryExpression extends AbstractExpression {
 	}
 	
 	@Override
-	public double evaluate() {
-		// TODO Auto-generated method stub
-		switch(this.operation) {
-		case '+':
-			return left.evaluate() + right.evaluate();
-		case '-':
-			return left.evaluate() - right.evaluate();
-		case '*':
-			return left.evaluate() * right.evaluate();
-		case '/':
-			return left.evaluate() / right.evaluate();
-		default:
-			return 0;			
-		}
-	}
+    public double evaluate() {
+        boolean leftVal = (left.evaluate() != 0);
+        boolean rightVal = (right.evaluate() != 0);
+        switch (operation) {
+            case "&&":
+                return leftVal && rightVal ? 1 : 0;
+            case "||":
+                return leftVal || rightVal ? 1 : 0;
+            default:
+                throw new UnsupportedOperationException("Unknown logical operation " + operation);
+        }
+    }
 	
 	@Override
 	public String toJson() {
@@ -69,6 +67,4 @@ public class BinaryExpression extends AbstractExpression {
 		           "\"right\": "+right.toJson() +
 		           "}";
 	}
-	
-
 }

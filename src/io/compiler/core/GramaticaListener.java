@@ -1,6 +1,7 @@
 // Generated from Gramatica.g4 by ANTLR 4.13.2
 package io.compiler.core;
 
+	// Importações de classes Java necessárias para a execução da linguagem compilada.
 	import java.util.ArrayList;
 	import java.util.HashMap;
 	import java.util.Stack;
@@ -116,6 +117,26 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCmdAtribuicao(GramaticaParser.CmdAtribuicaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#bool_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool_expr(GramaticaParser.Bool_exprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#bool_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool_expr(GramaticaParser.Bool_exprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#relational_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterRelational_expr(GramaticaParser.Relational_exprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#relational_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitRelational_expr(GramaticaParser.Relational_exprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree

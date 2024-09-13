@@ -48,4 +48,22 @@ public class WhileCommand extends Command {
 		str.append("}");
 		return str.toString();
 	}
+	
+	@Override
+	public String generateTargetPython() {
+	    // Substitui os operadores lógicos Java pelos equivalentes em Python
+	    String pythonExpression = expression
+	        .replace("&&", " and ")
+	        .replace("||", " or ");
+
+	    StringBuilder str = new StringBuilder();
+	    str.append("	while (" + pythonExpression + "):\n");
+
+	    for (Command cmd : commandList) {
+	        str.append("    " + cmd.generateTargetPython());
+	    }
+	    
+	    str.append("\n");
+	    return str.toString();
+	}
 }

@@ -43,6 +43,9 @@ public class Program {
 			else if (var.getType() == Types.FLOAT) {
 				str.append("    FLOAT ");
 			}
+			else if (var.getType() == Types.BOOLEAN) {
+				str.append("    BOOLEAN ");
+			}
 			else {
 				str.append("    STRING ");
 			}
@@ -56,4 +59,34 @@ public class Program {
 		str.append("}");
 		return str.toString();
 	}
+	
+	public String generateTargetPython() {
+	    StringBuilder str = new StringBuilder();
+	    str.append("import sys\n"); // Importar módulos essenciais, se necessário
+	    str.append("def main():\n");
+	    
+	    for (String varId: symbolTable.keySet()) {
+	        Var var = symbolTable.get(varId);
+	        if (var.getType() == Types.INT || var.getType() == Types.FLOAT) {
+	            str.append("    " + var.getId() + " = 0\n"); // Inicializa com zero
+	        }
+	        else if (var.getType() == Types.BOOLEAN) {
+	            str.append("    " + var.getId() + " = False\n"); // Inicializa como False
+	        }
+	        else {
+	            str.append("    " + var.getId() + " = \"\"\n"); // Inicializa como string vazia
+	        }
+	    }
+	    
+	    for (Command cmd: commandList) {
+	        str.append(cmd.generateTargetPython()); // Assumindo que você também implementará generateTargetPython em cada comando
+	    }
+	    
+	    str.append("\nif __name__ == \"__main__\":\n");
+	    str.append("    main()\n");
+	    
+	    return str.toString();
+	}
+
+
 }

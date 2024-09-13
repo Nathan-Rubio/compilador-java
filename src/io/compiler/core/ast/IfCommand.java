@@ -63,5 +63,25 @@ public class IfCommand extends Command{
 		return str.toString();
 	}
 	
-
+	@Override
+	public String generateTargetPython() {
+		// Substitui os operadores lógicos Java pelos equivalentes em Python
+	    String pythonExpression = expression
+	        .replace("&&", " and ")
+	        .replace("||", " or ");
+	    
+		StringBuilder str = new StringBuilder();
+		str.append("	if ("+pythonExpression+"):\n");
+		for (Command cmd: trueList) {
+			str.append("	" + cmd.generateTargetPython());
+		}
+		if (!falseList.isEmpty()) {
+			str.append("	else:\n");
+			for (Command cmd: falseList) {
+				str.append("	" + cmd.generateTargetPython());
+			}
+		}
+		str.append("\n");
+		return str.toString();
+	}
 }

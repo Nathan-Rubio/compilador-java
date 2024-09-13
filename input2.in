@@ -1,0 +1,17 @@
+$ programa2
+	declare INT   a, b, c;
+	declare FLOAT x, y;
+	declare STRING s;
+	
+	{	
+		a := 2;
+		b := 3;
+		c := 5;
+		s := "string";
+		
+		x := a + b + c;
+		y := x * a - b;
+		
+		y := y + y;
+	}
+$

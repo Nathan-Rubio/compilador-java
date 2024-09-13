@@ -1,10 +1,34 @@
 $ programa
 	declare INT   x;
 	declare FLOAT y, z;
+	declare BOOLEAN a, b;
+	declare STRING c;
+	
 	{	
-		x := 5 / 2;
-		y := 5 / 2;
+		a := verdadeiro;
+		b := falso;
+		x := 5;
+		y := 20;
 		
 		z := y + x * 2;
+		
+		enquanto (x < 10 || y > 3) {
+			x := x + 1;
+			y := y - 2;
+			
+			escreva(x);
+			escreva(y);
+		}
+		
+		se (x >= 2 && z != 3) entao {
+			x := 10;
+		}
+		senao {
+			y := 5 * z;
+		}
+		
+		faca {
+			x := x - 1;
+		} enquanto (y > 3);
 	}
 $

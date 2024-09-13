@@ -17,11 +17,16 @@ public class MainClass {
 			GramaticaLexer lexer;
 			GramaticaParser parser;
 			
-			lexer = new GramaticaLexer(CharStreams.fromFileName("input.in"));
-			
+			lexer = new GramaticaLexer(CharStreams.fromFileName("input2.in"));
 			CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-			
 			parser = new GramaticaParser(tokenStream);
+			
+			GramaticaLexer lexerExpression;
+			GramaticaParser parserExpression;
+			
+			lexerExpression = new GramaticaLexer(CharStreams.fromFileName("expression.in"));
+			CommonTokenStream tokenStreamExpression = new CommonTokenStream(lexerExpression);
+			parserExpression = new GramaticaParser(tokenStreamExpression);
 			
 			System.out.println("Compilador");
 			parser.prog();
@@ -30,13 +35,23 @@ public class MainClass {
 			
 			Program program = parser.getProgram();
 			
-			System.out.println(program.generateTarget());
+			System.out.println("Starting Expression Analysis");
+			parserExpression.expr();
+			System.out.println("Analysis Finished!");
+			System.out.println("Expression value " + parserExpression.generateValue());
+			
 			try {
 				File f = new File(program.getName()+".java");
 				FileWriter fr = new FileWriter(f);
 				PrintWriter pr = new PrintWriter(fr);
 				pr.println(program.generateTarget());
 				pr.close();
+				
+				File fPy = new File(program.getName()+".py");
+				FileWriter frPy = new FileWriter(fPy);
+				PrintWriter prPy = new PrintWriter(frPy);
+				prPy.println(program.generateTargetPython());
+				prPy.close();
 			}
 			catch (IOException e) {
 				e.printStackTrace();

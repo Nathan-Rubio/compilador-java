@@ -1,6 +1,7 @@
 // Generated from Gramatica.g4 by ANTLR 4.13.2
 package io.compiler.core;
 
+	// Importações de classes Java necessárias para a execução da linguagem compilada.
 	import java.util.ArrayList;
 	import java.util.HashMap;
 	import java.util.Stack;
@@ -141,6 +142,30 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCmdAtribuicao(GramaticaParser.CmdAtribuicaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool_expr(GramaticaParser.Bool_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool_expr(GramaticaParser.Bool_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRelational_expr(GramaticaParser.Relational_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRelational_expr(GramaticaParser.Relational_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

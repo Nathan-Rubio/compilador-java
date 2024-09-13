@@ -2,12 +2,6 @@ package io.compiler.core.ast;
 
 public class WriteCommand extends Command{
 	private String content;
-
-	@Override
-	public String generateTarget() {
-		// TODO Auto-generated method stub
-		return "System.out.println("+content+");\n";
-	}
 	
 	public String getContent() {
 		return content;
@@ -26,4 +20,15 @@ public class WriteCommand extends Command{
 		super();
 	}
 	
+	@Override
+	public String generateTarget() {
+		// TODO Auto-generated method stub
+		return "System.out.println("+content+");\n";
+	}
+	
+	@Override
+	public String generateTargetPython() {
+		// TODO Auto-generated method stub
+		return "	print("+content+")\n";
+	}
 }
