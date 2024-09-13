@@ -14,7 +14,7 @@ Nathan Rubio - 11201922233
 * Verificação de Declaração de Variável
 * Verificação do uso de Variável
 * Verificação da Inicialização da Variável
-* Inserção de operadores relacionais e booleanos (&& e ||)
+* Inserção de operadores relacionais e booleanos ('&&' e '||')
 
 ## Variáveis na seção @members
 
