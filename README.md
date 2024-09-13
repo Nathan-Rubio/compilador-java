@@ -474,8 +474,8 @@ fator :	ID  {
 
 ## COMPILAÇÃO
 
-A compilação do programa é feita usando no MainClass.java, retornando a saída do programa e um programa equivalente na linguagem Java e também na linguagem Python. Pode ser utilizado os arquivos input.in e input2.in, já feitos, baseados na gramática utilizada.
+A compilação do programa é feita usando no `MainClass.java`, retornando a saída do programa e um programa equivalente na linguagem Java e também na linguagem Python. Pode ser utilizado os arquivos `input.in` e `input2.in`, já feitos, baseados na gramática utilizada.
 
 ## AVALIADOR DE EXPRESSÕES ARITMÉTICAS
 
-Foi incorporado ao MainClass a execução de um simples avaliador de expressões aritméticas, utilizando o arquivo expression.in que contém apenas a expressão a ser avaliada com o resultado da avaliação sendo retornado com a execução do arquivo.
+Foi incorporado ao MainClass a execução de um simples avaliador de expressões aritméticas, utilizando o arquivo `expression.in` que contém apenas a expressão a ser avaliada com o resultado da avaliação sendo retornado com a execução do arquivo.
