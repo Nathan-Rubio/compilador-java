@@ -1,7 +1,5 @@
 # COMPILADOR JAVA
 
-Nathan Rubio - 11201922233
-
 ## ITENS DA GRAMÁTICA
 
 * 4 Tipos de Variáveis (INT, FLOAT, STRING, BOOLEAN)
